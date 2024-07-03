@@ -1,0 +1,35 @@
+{
+  "name": "express-generated-devcontainer",
+  "build": { "dockerfile": "Dockerfile" },
+  "runArgs": ["--init", "--privileged"],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/environment,type=bind,consistency=cached",
+  "workspaceFolder": "/home/vscode",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2.9.0": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    }
+  },
+  "forwardPorts": [3000, 8000],
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "github.copilot",
+        "loiane.ts-extension-pack",
+        "mechatroner.rainbow-csv",
+        "mhutchie.git-graph",
+        "mikestead.dotenv",
+        "ms-vsliveshare.vsliveshare",
+        "ms-vscode.live-server",
+        "prisma.prisma"
+      ]
+    }
+  },
+  "postCreateCommand": "/bin/bash ~/environment/.devcontainer/postCreateCommand.sh",
+  "postAttachCommand": "/bin/bash ~/environment/.devcontainer/postAttachCommand.sh"
+}
